@@ -16,12 +16,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from projects.urls import notes_urlpatterns
+from projects.urls import home_urlpatterns
+from suscriptions.urls import suscriptions_urlpatterns
+from geotechnical_profile.urls import geotechnical_urlpatterns
+from laboratories.urls import  laboratories_urlpatterns
+from perforation_register.urls import perforation_urlpatterns
+from settlements.urls import settlements_urlpatterns
+from portant_capacity.urls import portant_capacity_urlpatterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('token-auth/', obtain_jwt_token),
     path('users/',include('users.urls')),
+    #path('perfil/',include('geotechnical_profile.urls')),
+    #path('settlements/',include('settlements.urls')),
     
+    
+   
 ]
-urlpatterns += notes_urlpatterns
+urlpatterns += home_urlpatterns
+urlpatterns += suscriptions_urlpatterns
+urlpatterns += laboratories_urlpatterns
+urlpatterns += geotechnical_urlpatterns
+urlpatterns += perforation_urlpatterns
+urlpatterns += settlements_urlpatterns
+urlpatterns+= portant_capacity_urlpatterns
+

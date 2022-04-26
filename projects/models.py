@@ -17,5 +17,4 @@ class home1(models.Model):
     cantidad = models.PositiveBigIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     def __str__(self):
         return self.nombreProyecto
-
-
+    

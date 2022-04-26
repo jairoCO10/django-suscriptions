@@ -8,8 +8,8 @@ from .views import homeViewSet
 
 
 router = DefaultRouter()
-router.register("home", homeViewSet, basename="home")
-notes_urlpatterns = [path("api/home/", include(router.urls))]
+router.register("projects", homeViewSet, basename="projects")
+home_urlpatterns = [path("api/home/", include(router.urls))]
 
 
 

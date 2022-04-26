@@ -5,7 +5,7 @@ from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework import viewsets
 from django.core import serializers
 from django.http import JsonResponse, HttpResponse, response
 from rest_framework import status, permissions
@@ -17,6 +17,15 @@ from django.forms.models import model_to_dict
 
 from .serializers import UserSerializer
 from .models import User
+
+
+# class GroupViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint that allows groups to be viewed or edited.
+#     """
+#     queryset = groups.objects.all()
+#     serializer_class = GroupSerializer
+
 
 
 @api_view(['GET'])
@@ -31,7 +40,7 @@ def current_user(request):
 class UserList(APIView):
     permission_classes = (permissions.AllowAny,)
     def post(self, request, format=None):
-        #Token.objects.get_or_create(user=request.user)
+        Token.objects.get_or_create(user=request.user)
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

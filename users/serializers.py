@@ -3,6 +3,11 @@ from rest_framework_jwt.settings import api_settings
 from .models import User
 
 
+# class GroupSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = groups
+#         fields = ('__all__')
+
 class UserSerializer(serializers.ModelSerializer):
 
     #token = serializers.SerializerMethodField()

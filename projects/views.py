@@ -1,8 +1,8 @@
-from itertools import count
+
 from django.shortcuts import render
 
 # Create your views here.
-from turtle import home
+
 from django.http import JsonResponse, HttpResponse
 import json
 from rest_framework.response import Response
@@ -21,21 +21,12 @@ import pandas as pd
 class homeViewSet(viewsets.ModelViewSet):
     serializer_class = SnippetSerializer
     queryset = home1.objects.all()
-    dato = pd.DataFrame(home1.objects.all())
-    user_Count = home1.objects.all().count()
-    count = 5
-    if (user_Count <= count):
-        print(user_Count)
-        def perform_create(self, serializer):
-            counts = home1.cantidad
-            datos = pd.DataFrame(home1.objects.all()).count()
-            if (home1.cantidad == counts):
-                serializer.save(iduser=self.request.user) 
-        def get_queryset(self):
-            return self.queryset.filter(iduser=self.request.user)
-    else :
-        print("usted no puede agregar mas datos")
-
+    def perform_create(self, serializer):
+        serializer.save(iduser=self.request.user) 
+    
+    def get_queryset(self):
+        return self.queryset.filter(iduser=self.request.user)
+    
 
 @api_view(['PUT','POST', 'GET'])
 def home_post_CRUD(request, id=0):

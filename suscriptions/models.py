@@ -13,4 +13,6 @@ CHOICES = [
 class membresia (models.Model):
     idmembresia = models.IntegerField(primary_key=True,auto_created=True)
     tipomenbresia = models.CharField(choices=CHOICES, max_length=40)
+    def __str__(self):
+        return self.tipomenbresia
     

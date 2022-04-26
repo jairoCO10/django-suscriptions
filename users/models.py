@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from django.contrib.auth.models import AbstractUser, BaseUserManager, make_password
+from django.contrib.auth.models import AbstractUser, BaseUserManager, make_password, Group
 
 
 
@@ -36,13 +36,33 @@ class UserManager(BaseUserManager):
         return user
 
 
+# class groups(Group):
+#     namegroup = models.CharField(Roles,max_length=250, unique=True)
+#     def __str__(self):
+#         return self.namegroup
+    
+
 class User(AbstractUser):
     pass
     username = None
     email = models.EmailField(('email address'), unique=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    
+    #idgroup = models.ForeignKey(groups,blank=True, null=True, editable=True, on_delete=models.CASCADE)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+
+
+
+# {
+#     "is_staff": true,
+#     "is_active": true,
+#     "email": "andreagomes06@gmail.com",
+#     "first_name": "andrea",
+#     "last_name": "gomez",
+#     "password": "792b3b58"
+    
+# }
+
